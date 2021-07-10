@@ -1,0 +1,18 @@
+FROM node:12.15.0
+
+RUN apt-get update
+
+ADD package.json /tmp/package.json
+RUN cd /tmp && npm install
+
+RUN npm install -g nexe@3.3.3
+RUN mkdir /root/.nexe
+
+WORKDIR /build
+ADD . /build
+RUN nexe --temp /root/.nexe -t linux-x64-12.15.0 -r "p1/*.js" -o out 
+WORKDIR /app
+RUN cp /build/out /app/
+RUN rm -rf /build
+
+ENTRYPOINT ["./out"]

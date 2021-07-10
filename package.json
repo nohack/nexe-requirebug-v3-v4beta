@@ -1,0 +1,6 @@
+{
+  "name": "nexe-requirebug-v3-v4beta",
+  "version": "1.0.0",
+  "description": "nexe dynamic require testing",
+  "main": "index.js"
+}

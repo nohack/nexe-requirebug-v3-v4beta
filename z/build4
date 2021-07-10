@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+DIMG=$(basename "$(pwd)")-4.beta.18
+dockerfile="Dockerfile.nexe@4.0.0-beta.18"
+docker build -t "${DIMG}" -f "$dockerfile" .
+if [ "$?" == 0 ]; then
+    echo "Image ${DIMG} build success!"
+else
+    echo "Image ${DIMG} build FAIL!"
+    exit 1
+fi
+
